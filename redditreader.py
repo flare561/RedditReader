@@ -90,9 +90,9 @@ def process_reddit(bot):
         items = scan(defaultConfig['subreddit'])
         for item in items:
             for key in bot.channels.keys():
-                if not str(item) in bot.scanned_items:
+                if not item.permalink in bot.scanned_items:
                     bot.send_message(key, str(item))
-                    bot.scanned_items.append(str(item))
+                    bot.scanned_items.append(item.permalink)
     except:
         print "ERROR", str(sys.exc_info())
         print traceback.print_tb(sys.exc_info()[2])
