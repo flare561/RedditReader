@@ -102,7 +102,7 @@ if __name__ == "__main__":
     s = RedditReader(defaultConfig['nick'].encode('ascii', 'replace'))
     s.connect(defaultConfig['server'].encode('ascii', 'replace'), channel=defaultConfig['channels'].encode('ascii', 'replace'),
               use_ssl=False)
-    s.scanned_items = [str(item) for item in scan((defaultConfig['subreddit']))]
+    s.scanned_items = [item.permalink for item in scan((defaultConfig['subreddit']))]
     t = process_reddit(s)
     print "Starting"
     s.start()
